@@ -1,6 +1,6 @@
-# Production requirements for LLM Code Deployment Application
 flask==3.1.2
 openai==2.3.0
 pygithub==2.8.1
 requests==2.32.5
 python-dotenv==1.1.1
+gunicorn==23.0.0
