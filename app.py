@@ -101,8 +101,29 @@ def process_request_background(request_data):
     except Exception as e:
         logger.error(f"Error in background processing: {str(e)}", exc_info=True)
 
+@app.route('/', methods=['GET'])
+def index():
+    """Root endpoint with welcome message and API information."""
+    return jsonify({
+        "message": "Hello Flask! Welcome to LLM Code Deployment Application",
+        "service": "llm-code-deployment",
+        "version": "1.0.0",
+        "endpoints": {
+            "health": "/health (GET) - Health check",
+            "create": "/create (POST) - Deploy application from brief",
+            "api_endpoint": "/api-endpoint (POST) - Alternative deployment endpoint"
+        },
+        "description": "Automated web application deployment using OpenRouter LLM and GitHub Pages"
+    }), 200
 
-@app.route('/api-endpoint', methods=['POST'])
+
+@app.route('/create', methods=['POST'])
+def api_endpoint():
+    """Alternative endpoint name for compatibility."""
+    return handle_deployment_request()
+
+
+@app.route('/create', methods=['POST'])
 def handle_deployment_request():
     """
     Main API endpoint that receives project briefs and initiates deployment process.
