@@ -111,7 +111,6 @@ def index():
         "endpoints": {
             "health": "/health (GET) - Health check",
             "create": "/create (POST) - Deploy application from brief",
-            "api_endpoint": "/api-endpoint (POST) - Alternative deployment endpoint"
         },
         "description": "Automated web application deployment using OpenRouter LLM and GitHub Pages"
     }), 200
